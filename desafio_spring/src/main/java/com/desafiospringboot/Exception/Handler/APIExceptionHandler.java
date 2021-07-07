@@ -1,7 +1,7 @@
 package com.desafiospringboot.Exception.Handler;
 
 import com.desafiospringboot.DTOs.ExceptionDTO;
-import com.desafiospringboot.Entities.User;
+import com.desafiospringboot.Exception.InvalidArgumentException;
 import com.desafiospringboot.Exception.UserNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
@@ -37,6 +37,11 @@ public class APIExceptionHandler {
 
     @ExceptionHandler(UserNotFoundException.class)
     public ResponseEntity<ExceptionDTO> defaultHandler(UserNotFoundException e){
+        return ResponseEntity.badRequest().body(new ExceptionDTO(e.getMessage()));
+    }
+
+    @ExceptionHandler(InvalidArgumentException.class)
+    public ResponseEntity<ExceptionDTO> defaultHandler(InvalidArgumentException e){
         return ResponseEntity.badRequest().body(new ExceptionDTO(e.getMessage()));
     }
 

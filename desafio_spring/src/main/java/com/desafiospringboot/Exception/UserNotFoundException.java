@@ -8,4 +8,4 @@ public class UserNotFoundException extends RuntimeException{
         public UserNotFoundException(Exception e) {
             super(e);
         }
-    }
+}

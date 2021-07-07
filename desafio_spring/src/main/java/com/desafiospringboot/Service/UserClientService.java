@@ -3,13 +3,12 @@ package com.desafiospringboot.Service;
 
 import com.desafiospringboot.Entities.UserClient;
 import com.desafiospringboot.Entities.UserSeller;
+import com.desafiospringboot.Exception.InvalidArgumentException;
 import com.desafiospringboot.Exception.UserNotFoundException;
 import com.desafiospringboot.Repositories.UserClientRepository;
 import com.desafiospringboot.Repositories.UserSellerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
 
 @Service
 public class UserClientService {
@@ -49,9 +48,11 @@ public class UserClientService {
         UserClient client = findUserClientById(userId);
 
         int indexClient = seller.getFollowers().indexOf(client);
-        seller.getFollowers().remove(indexClient);
-
         int indexSeller = client.getFollowing().indexOf(seller);
+
+        if (indexClient == -1 || indexSeller == -1) throw new InvalidArgumentException("Argumento inválido para essa operação. Consulte o administrador do sistema");
+
+        seller.getFollowers().remove(indexClient);
         client.getFollowing().remove(indexSeller);
 
         this.userSellerRepository.save(seller);
