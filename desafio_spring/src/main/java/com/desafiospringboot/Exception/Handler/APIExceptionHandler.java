@@ -1,6 +1,6 @@
 package com.desafiospringboot.Exception.Handler;
 
-import com.desafiospringboot.DTO.ExceptionDTO;
+import com.desafiospringboot.DTOs.ExceptionDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;

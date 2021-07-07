@@ -1,4 +1,4 @@
-package com.desafiospringboot.DTO;
+package com.desafiospringboot.DTOs;
 
 public class ExceptionDTO {
     private String campo;
