@@ -30,4 +30,9 @@ public class UserController {
         UserSellerFollowersCountDTO sellerDTO =  this.userSellerService.countFollowers(userId);
         return new ResponseEntity<>(sellerDTO, HttpStatus.OK);
     }
+
+    @PostMapping("/{userId}/unfollow/{userIdToUnfollow}")
+    public void unfollow(@PathVariable int userId, @PathVariable int userIdToUnfollow){
+        this.userClientService.unfollow(userId, userIdToUnfollow);
+    }
 }
