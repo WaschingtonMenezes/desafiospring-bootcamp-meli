@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("userClient")
+@RequestMapping("/userClients")
 public class UserClient {
     private UserClientService userClientService;
 
