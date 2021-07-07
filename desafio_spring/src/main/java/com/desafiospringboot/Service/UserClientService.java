@@ -16,24 +16,46 @@ public class UserClientService {
     private UserClientRepository userClientRepository;
     private UserSellerRepository userSellerRepository;
 
+    private UserSellerService userSellerService;
+
     @Autowired
-    public UserClientService(UserClientRepository userClientRepository, UserSellerRepository userSellerRepository) {
+    public UserClientService(UserClientRepository userClientRepository, UserSellerRepository userSellerRepository, UserSellerService userSellerService) {
         this.userClientRepository = userClientRepository;
         this.userSellerRepository = userSellerRepository;
+        this.userSellerService = userSellerService;
     }
-    
-    public void follow(int userId, int userIdToFollow) {
+
+    public UserClient findUserClientById(int userId) {
         UserClient client = this.userClientRepository.findById(userId).stream().findFirst().orElse(null);
-        UserSeller seller = this.userSellerRepository.findById(userIdToFollow).stream().findFirst().orElse(null);
         if (client == null) {
             throw new UserNotFoundException("Cliente não encontrado");
         }
-        if (seller == null) {
-            throw new UserNotFoundException("Vendedor não encontrado");
-        }
+        return client;
+    }
+    
+    public void follow(int userId, int userIdToFollow) {
+        UserSeller seller = userSellerService.findUserSellerById(userIdToFollow);
+        UserClient client = findUserClientById(userId);
+
         seller.getFollowers().add(client);
         client.getFollowing().add(seller);
+
         this.userSellerRepository.save(seller);
         this.userClientRepository.save(client);
     }
+
+    public void unfollow(int userId, int userIdToUnfollow) {
+        UserSeller seller = userSellerService.findUserSellerById(userIdToUnfollow);
+        UserClient client = findUserClientById(userId);
+
+        int indexClient = seller.getFollowers().indexOf(client);
+        seller.getFollowers().remove(indexClient);
+
+        int indexSeller = client.getFollowing().indexOf(seller);
+        client.getFollowing().remove(indexSeller);
+
+        this.userSellerRepository.save(seller);
+        this.userClientRepository.save(client);
+    }
+
 }
