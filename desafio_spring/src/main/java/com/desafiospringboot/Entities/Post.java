@@ -7,7 +7,7 @@ import java.util.Date;
 public class Post {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private int id;
     private Date date;
     private Integer category;
     private Double price;
@@ -17,7 +17,7 @@ public class Post {
     @ManyToOne
     private UserSeller userSeller;
 
-    public Post(long id, Date date, Integer category, Double price, Product detail, UserSeller userSeller) {
+    public Post(int id, Date date, Integer category, Double price, Product detail, UserSeller userSeller) {
         this.id = id;
         this.date = date;
         this.category = category;
@@ -29,11 +29,11 @@ public class Post {
     public Post() {
     }
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

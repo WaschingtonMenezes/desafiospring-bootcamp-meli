@@ -11,7 +11,7 @@ public class UserClient extends User{
     @ManyToMany
     private List<UserSeller> following;
 
-    public UserClient(long id, String name, List<UserSeller> following) {
+    public UserClient(int id, String name, List<UserSeller> following) {
         super(id, name);
         this.following = following;
     }

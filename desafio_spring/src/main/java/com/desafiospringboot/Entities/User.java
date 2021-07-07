@@ -11,11 +11,11 @@ import java.util.List;
 public abstract class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private int id;
     @NotNull
     private String name;
 
-    public User(long id, String name) {
+    public User(int id, String name) {
         this.id = id;
         this.name = name;
     }
@@ -23,11 +23,11 @@ public abstract class User {
     public User() {
     }
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

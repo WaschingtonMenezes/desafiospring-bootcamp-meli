@@ -8,7 +8,7 @@ import javax.validation.constraints.NotNull;
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private int id;
     @NotNull
     private String name;
     @NotNull
@@ -22,7 +22,7 @@ public class Product {
     @OneToOne
     private Post post;
 
-    public Product(long id, String name, String type, String brand, String color, String notes, Post post) {
+    public Product(int id, String name, String type, String brand, String color, String notes, Post post) {
         this.id = id;
         this.name = name;
         this.type = type;
@@ -35,11 +35,11 @@ public class Product {
     public Product() {
     }
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

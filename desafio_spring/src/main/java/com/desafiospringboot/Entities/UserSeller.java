@@ -14,7 +14,7 @@ public class UserSeller extends User{
     @OneToMany
     private List<Post> posts;
 
-    public UserSeller(long id, String name, List<UserClient> followers) {
+    public UserSeller(int id, String name, List<UserClient> followers) {
         super(id, name);
         this.followers = followers;
     }
