@@ -5,11 +5,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class UserClientSeller {
+public class UserSellerService {
     private UserClientRepository userClientRepository;
 
     @Autowired
-    public UserClientSeller(UserClientRepository userClientRepository) {
+    public UserSellerService(UserClientRepository userClientRepository) {
         this.userClientRepository = userClientRepository;
     }
 }
