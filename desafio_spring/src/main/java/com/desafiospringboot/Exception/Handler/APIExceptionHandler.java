@@ -36,8 +36,8 @@ public class APIExceptionHandler {
     }
 
     @ExceptionHandler(UserNotFoundException.class)
-    public ResponseEntity<String> defaultHandler(UserNotFoundException e){
-        return ResponseEntity.badRequest().body(e.getMessage());
+    public ResponseEntity<ExceptionDTO> defaultHandler(UserNotFoundException e){
+        return ResponseEntity.badRequest().body(new ExceptionDTO(e.getMessage()));
     }
 
     private List<ExceptionDTO> processFieldErrors(List<FieldError> fieldErrors) {
