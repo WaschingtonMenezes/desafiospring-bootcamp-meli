@@ -1,6 +1,8 @@
 package com.desafiospringboot.Exception.Handler;
 
 import com.desafiospringboot.DTOs.ExceptionDTO;
+import com.desafiospringboot.Entities.User;
+import com.desafiospringboot.Exception.UserNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
@@ -31,6 +33,11 @@ public class APIExceptionHandler {
         List<ExceptionDTO> processedFieldErrors = processFieldErrors(fieldErrors);
 
         return ResponseEntity.badRequest().body(processedFieldErrors);
+    }
+
+    @ExceptionHandler(UserNotFoundException.class)
+    public ResponseEntity<String> defaultHandler(UserNotFoundException e){
+        return ResponseEntity.badRequest().body(e.getMessage());
     }
 
     private List<ExceptionDTO> processFieldErrors(List<FieldError> fieldErrors) {
