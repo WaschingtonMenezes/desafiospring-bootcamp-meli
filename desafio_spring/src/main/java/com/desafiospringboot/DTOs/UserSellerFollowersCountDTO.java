@@ -19,4 +19,16 @@ public class UserSellerFollowersCountDTO {
     public static UserSellerFollowersCountDTO convert(UserSeller seller) {
         return new UserSellerFollowersCountDTO(seller.getId(), seller.getName(), (int) seller.getFollowers().stream().count());
     }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getCount() {
+        return count;
+    }
 }

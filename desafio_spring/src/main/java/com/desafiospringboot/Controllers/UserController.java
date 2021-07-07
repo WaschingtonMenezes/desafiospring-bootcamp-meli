@@ -1,6 +1,9 @@
 package com.desafiospringboot.Controllers;
 
+import com.desafiospringboot.DTOs.UserClientFollowingDTO;
 import com.desafiospringboot.DTOs.UserSellerFollowersCountDTO;
+import com.desafiospringboot.Entities.UserClient;
+import com.desafiospringboot.Entities.UserSeller;
 import com.desafiospringboot.Service.UserClientService;
 import com.desafiospringboot.Service.UserSellerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,5 +32,16 @@ public class UserController {
     public ResponseEntity<UserSellerFollowersCountDTO> getFollowersCount(@PathVariable int userId) {
         UserSellerFollowersCountDTO sellerDTO =  this.userSellerService.countFollowers(userId);
         return new ResponseEntity<>(sellerDTO, HttpStatus.OK);
+    }
+
+    @PostMapping("/{userId}/unfollow/{userIdToUnfollow}")
+    public void unfollow(@PathVariable int userId, @PathVariable int userIdToUnfollow){
+        this.userClientService.unfollow(userId, userIdToUnfollow);
+    }
+
+    @GetMapping("/{userId}/followed/list")
+    public ResponseEntity<UserClientFollowingDTO> getFollowersList(@PathVariable int userId) {
+        UserClient client =  this.userClientService.findUserClientById(userId);
+        return new ResponseEntity<>(UserClientFollowingDTO.convert(client), HttpStatus.OK);
     }
 }
