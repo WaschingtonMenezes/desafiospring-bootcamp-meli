@@ -25,4 +25,12 @@ public class UserSellerService {
 
         return UserSellerFollowersCountDTO.convert(seller);
     }
+
+    public UserSeller findUserSellerById(int userId) {
+        UserSeller seller = this.userSellerRepository.findById(userId).stream().findFirst().orElse(null);
+        if (seller == null) {
+            throw new UserNotFoundException("Vendedor não encontrado");
+        }
+        return seller;
+    }
 }
