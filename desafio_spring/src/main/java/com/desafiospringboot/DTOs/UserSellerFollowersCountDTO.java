@@ -2,8 +2,12 @@ package com.desafiospringboot.DTOs;
 
 import com.desafiospringboot.Entities.UserSeller;
 
+import javax.validation.constraints.NotNull;
+
 public class UserSellerFollowersCountDTO {
+    @NotNull
     private int userId;
+    @NotNull
     private String userName;
     private int followers_count;
 

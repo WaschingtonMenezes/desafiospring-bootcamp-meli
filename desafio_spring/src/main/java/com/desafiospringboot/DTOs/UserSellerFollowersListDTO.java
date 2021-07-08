@@ -2,11 +2,14 @@ package com.desafiospringboot.DTOs;
 
 import com.desafiospringboot.Entities.UserSeller;
 
+import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
 public class UserSellerFollowersListDTO {
+    @NotNull
     private int userId;
+    @NotNull
     private String sellerName;
     private List<UserClient> followers;
 
