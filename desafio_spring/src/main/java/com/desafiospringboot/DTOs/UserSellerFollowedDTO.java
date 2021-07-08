@@ -13,11 +13,11 @@ public class UserSellerFollowedDTO {
 
      private static class UserSeller {
         private int userId;
-        private String name;
+        private String userName;
 
-         public UserSeller(int userId, String name) {
+         public UserSeller(int userId, String userName) {
              this.userId = userId;
-             this.name = name;
+             this.userName = userName;
          }
 
          public int getUserId() {
@@ -29,11 +29,11 @@ public class UserSellerFollowedDTO {
          }
 
          public String getName() {
-             return name;
+             return userName;
          }
 
-         public void setName(String name) {
-             this.name = name;
+         public void setName(String userName) {
+             this.userName = userName;
          }
      }
 
