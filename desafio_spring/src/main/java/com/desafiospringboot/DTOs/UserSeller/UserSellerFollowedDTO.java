@@ -1,4 +1,4 @@
-package com.desafiospringboot.DTOs;
+package com.desafiospringboot.DTOs.UserSeller;
 
 
 import com.desafiospringboot.Entities.UserClient;
