@@ -54,7 +54,7 @@ public class UserClientService {
         int indexClient = seller.getFollowers().indexOf(client);
         int indexSeller = client.getFollowing().indexOf(seller);
 
-        if (indexClient == -1 || indexSeller == -1) throw new InvalidArgumentException("Argumento inválido para essa operação. Consulte o administrador do sistema");
+        if (indexClient == -1 || indexSeller == -1) throw new InvalidArgumentException("Argumento inválido para essa operação. O cliente informado não segue o vendedor");
 
         seller.getFollowers().remove(indexClient);
         client.getFollowing().remove(indexSeller);

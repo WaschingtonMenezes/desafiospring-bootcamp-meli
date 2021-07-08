@@ -3,11 +3,14 @@ package com.desafiospringboot.DTOs;
 
 import com.desafiospringboot.Entities.UserClient;
 
+import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
 public class UserSellerFollowedDTO {
+    @NotNull
     private int userId;
+    @NotNull
     private String userName;
     private List<UserSeller> followed;
 
