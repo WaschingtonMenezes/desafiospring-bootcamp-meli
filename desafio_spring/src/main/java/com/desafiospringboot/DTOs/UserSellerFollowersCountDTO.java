@@ -4,13 +4,13 @@ import com.desafiospringboot.Entities.UserSeller;
 
 public class UserSellerFollowersCountDTO {
     private int userId;
-    private String name;
-    private int count;
+    private String userName;
+    private int followers_count;
 
-    public UserSellerFollowersCountDTO(int userId, String name, int count) {
+    public UserSellerFollowersCountDTO(int userId, String userName, int followers_count) {
         this.userId = userId;
-        this.name = name;
-        this.count = count;
+        this.userName = userName;
+        this.followers_count = followers_count;
     }
 
     public UserSellerFollowersCountDTO() {
@@ -25,10 +25,10 @@ public class UserSellerFollowersCountDTO {
     }
 
     public String getName() {
-        return name;
+        return userName;
     }
 
     public int getCount() {
-        return count;
+        return followers_count;
     }
 }
