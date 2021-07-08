@@ -36,6 +36,14 @@ public class UserClientService {
         UserSeller seller = userSellerService.findUserSellerById(userIdToFollow);
         UserClient client = findUserClientById(userId);
 
+        if (client.getFollowing().indexOf(seller) != -1) {
+            throw new InvalidArgumentException("Argumento inválido para essa operação: O cliente já segue o Vendedor informado.");
+        }
+
+        if (seller.getFollowers().indexOf(client) != -1) {
+            throw new InvalidArgumentException("Argumento inválido para essa operação: O cliente já segue o Vendedor informado.");
+        }
+
         seller.getFollowers().add(client);
         client.getFollowing().add(seller);
 
