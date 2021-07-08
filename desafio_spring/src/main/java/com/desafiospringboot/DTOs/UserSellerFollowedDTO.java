@@ -6,7 +6,7 @@ import com.desafiospringboot.Entities.UserClient;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserClientFollowingDTO {
+public class UserSellerFollowedDTO {
      private int userId;
      private String userName;
      private List<UserSeller> followed;
@@ -37,7 +37,7 @@ public class UserClientFollowingDTO {
          }
      }
 
-    public UserClientFollowingDTO(int userId, String userName, List<UserSeller> followed) {
+    public UserSellerFollowedDTO(int userId, String userName, List<UserSeller> followed) {
         this.userId = userId;
         this.userName = userName;
         this.followed = followed;
@@ -55,9 +55,9 @@ public class UserClientFollowingDTO {
         return followed;
     }
 
-    public static UserClientFollowingDTO convert (UserClient user) {
+    public static UserSellerFollowedDTO convert (UserClient user) {
          List<UserSeller> listSellers = new ArrayList<>();
          user.getFollowing().forEach(seller -> listSellers.add(new UserSeller(seller.getId(), seller.getName())));
-         return new UserClientFollowingDTO(user.getId(), user.getName(), listSellers);
+         return new UserSellerFollowedDTO(user.getId(), user.getName(), listSellers);
     }
 }
