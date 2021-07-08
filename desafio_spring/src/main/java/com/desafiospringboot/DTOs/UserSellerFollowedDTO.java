@@ -7,26 +7,26 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserSellerFollowedDTO {
-     private int userId;
-     private String userName;
-     private List<UserSeller> followed;
+    private int userId;
+    private String userName;
+    private List<UserSeller> followed;
 
-     private static class UserSeller {
+    private static class UserSeller {
         private int userId;
         private String userName;
 
-         public UserSeller(int userId, String userName) {
-             this.userId = userId;
-             this.userName = userName;
-         }
+        public UserSeller(int userId, String userName) {
+            this.userId = userId;
+            this.userName = userName;
+        }
 
-         public int getUserId() {
-             return userId;
-         }
+        public int getUserId() {
+            return userId;
+        }
 
-         public void setUserId(int userId) {
-             this.userId = userId;
-         }
+        public void setUserId(int userId) {
+            this.userId = userId;
+        }
 
          public String getName() {
              return userName;
@@ -56,8 +56,8 @@ public class UserSellerFollowedDTO {
     }
 
     public static UserSellerFollowedDTO convert (UserClient user) {
-         List<UserSeller> listSellers = new ArrayList<>();
-         user.getFollowing().forEach(seller -> listSellers.add(new UserSeller(seller.getId(), seller.getName())));
-         return new UserSellerFollowedDTO(user.getId(), user.getName(), listSellers);
+        List<UserSeller> listSellers = new ArrayList<>();
+        user.getFollowing().forEach(seller -> listSellers.add(new UserSeller(seller.getId(), seller.getName())));
+        return new UserSellerFollowedDTO(user.getId(), user.getName(), listSellers);
     }
 }
