@@ -1,6 +1,7 @@
 package com.desafiospringboot.Service;
 
-import com.desafiospringboot.DTOs.PostDTO;
+import com.desafiospringboot.DTOs.Post.PostDTO;
+import com.desafiospringboot.DTOs.Post.PostPromoDTO;
 import com.desafiospringboot.Entities.Post;
 import com.desafiospringboot.Entities.Product;
 import com.desafiospringboot.Entities.UserSeller;
@@ -25,6 +26,17 @@ public class PostService {
         Post post = PostDTO.convert(postDTO);
         UserSeller user = userSellerService.findUserSellerById(postDTO.getUserId());
         Product createdProduct = productService.findOrCreateProduct(postDTO.getDetail());
+
+        post.setDetail(createdProduct);
+        post.setUserSeller(user);
+
+        return postRepository.save(post);
+    }
+
+    public Post createPromoPost(PostPromoDTO promoPostDTO) {
+        Post post = PostPromoDTO.convert(promoPostDTO);
+        UserSeller user = userSellerService.findUserSellerById(promoPostDTO.getUserId());
+        Product createdProduct = productService.findOrCreateProduct(promoPostDTO.getDetail());
 
         post.setDetail(createdProduct);
         post.setUserSeller(user);
