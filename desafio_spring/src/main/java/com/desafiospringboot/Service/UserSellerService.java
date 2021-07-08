@@ -1,7 +1,9 @@
 package com.desafiospringboot.Service;
 
 import com.desafiospringboot.DTOs.UserSellerFollowersCountDTO;
+import com.desafiospringboot.DTOs.UserSellerFollowersListDTO;
 import com.desafiospringboot.Entities.UserSeller;
+import com.desafiospringboot.Exception.InvalidArgumentException;
 import com.desafiospringboot.Exception.UserNotFoundException;
 import com.desafiospringboot.Repositories.UserSellerRepository;
 import org.springframework.beans.factory.annotation.Autowired;

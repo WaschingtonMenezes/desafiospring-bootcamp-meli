@@ -1,6 +1,7 @@
 package com.desafiospringboot.Controllers;
 
 import com.desafiospringboot.DTOs.UserClientFollowingDTO;
+import com.desafiospringboot.DTOs.UserSellerFollowersListDTO;
 import com.desafiospringboot.DTOs.UserSellerFollowersCountDTO;
 import com.desafiospringboot.Entities.UserClient;
 import com.desafiospringboot.Entities.UserSeller;
@@ -43,5 +44,11 @@ public class UserController {
     public ResponseEntity<UserClientFollowingDTO> getFollowersList(@PathVariable int userId) {
         UserClient client =  this.userClientService.findUserClientById(userId);
         return new ResponseEntity<>(UserClientFollowingDTO.convert(client), HttpStatus.OK);
+    }
+
+    @GetMapping("/{userId}/followers/list")
+    public ResponseEntity<UserSellerFollowersListDTO> getFollowList(@PathVariable int userId) {
+        UserSeller seller =  this.userSellerService.findUserSellerById(userId);
+        return new ResponseEntity<>(UserSellerFollowersListDTO.convert(seller), HttpStatus.OK);
     }
 }
