@@ -11,6 +11,8 @@ public class Post {
     private Date date;
     private Integer category;
     private Double price;
+    private Boolean hasPromo = false;
+    private Double discount;
 
     @OneToOne
     private Product detail;
@@ -75,5 +77,21 @@ public class Post {
 
     public void setUserSeller(UserSeller userSeller) {
         this.userSeller = userSeller;
+    }
+
+    public Boolean getHasPromo() {
+        return hasPromo;
+    }
+
+    public void setHasPromo(Boolean hasPromo) {
+        this.hasPromo = hasPromo;
+    }
+
+    public Double getDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(Double discount) {
+        this.discount = discount;
     }
 }

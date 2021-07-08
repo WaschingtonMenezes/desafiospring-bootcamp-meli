@@ -1,6 +1,7 @@
 package com.desafiospringboot.Controllers;
 
-import com.desafiospringboot.DTOs.PostDTO;
+import com.desafiospringboot.DTOs.Post.PostDTO;
+import com.desafiospringboot.DTOs.Post.PostPromoDTO;
 import com.desafiospringboot.Entities.Post;
 import com.desafiospringboot.Service.PostService;
 import com.desafiospringboot.Service.ProductService;
@@ -27,5 +28,11 @@ public class ProductController {
         Post createdPost = postService.createPost(newPost);
 
         return ResponseEntity.ok(PostDTO.convert(createdPost));
+    }
+
+    @PostMapping("/newpromopost")
+    public ResponseEntity<PostPromoDTO> createPromoPost(@RequestBody @Valid PostPromoDTO newPost) {
+        Post createdPost = postService.createPromoPost(newPost);
+        return ResponseEntity.ok(PostPromoDTO.convert(createdPost));
     }
 }

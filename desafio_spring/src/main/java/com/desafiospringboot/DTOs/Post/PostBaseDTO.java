@@ -1,5 +1,6 @@
-package com.desafiospringboot.DTOs;
+package com.desafiospringboot.DTOs.Post;
 
+import com.desafiospringboot.DTOs.ProductDTO;
 import com.desafiospringboot.Entities.Post;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -7,7 +8,7 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
 
-public class PostDTO {
+public abstract class PostBaseDTO {
     private int id_post;
     @NotNull
     private int userId;
@@ -66,10 +67,10 @@ public class PostDTO {
         this.detail = detail;
     }
 
-    public PostDTO() {
+    public PostBaseDTO() {
     }
 
-    public PostDTO(Post post) {
+    public PostBaseDTO(Post post) {
         this.id_post = post.getId();
         this.userId = post.getUserSeller().getId();
         this.date = post.getDate();
@@ -78,19 +79,12 @@ public class PostDTO {
         this.detail = new ProductDTO(post.getDetail());
     }
 
-    public static PostDTO convert(Post post) {
-        return new PostDTO(post);
-    }
-
-    public static Post convert(PostDTO postDTO) {
-        Post post = new Post();
-
-        post.setId(postDTO.getId_post());
-        post.setCategory(postDTO.getCategory());
-        post.setDate(postDTO.getDate());
-        post.setPrice(postDTO.getPrice());
-        post.setDetail(ProductDTO.convert(postDTO.getDetail()));
-
-        return post;
+    public PostBaseDTO(int id_post, int userId, Date date, Integer category, Double price, ProductDTO detail) {
+        this.id_post = id_post;
+        this.userId = userId;
+        this.date = date;
+        this.category = category;
+        this.price = price;
+        this.detail = detail;
     }
 }

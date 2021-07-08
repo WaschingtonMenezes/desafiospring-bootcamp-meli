@@ -1,9 +1,9 @@
 package com.desafiospringboot.Controllers;
 
-import com.desafiospringboot.DTOs.UserSellerFollowersListDTO;
-import com.desafiospringboot.DTOs.UserSellerFollowersCountDTO;
+import com.desafiospringboot.DTOs.UserSeller.UserSellerFollowedDTO;
+import com.desafiospringboot.DTOs.UserSeller.UserSellerFollowersCountDTO;
+import com.desafiospringboot.DTOs.UserSeller.UserSellerFollowersListDTO;
 import com.desafiospringboot.Entities.UserSeller;
-import com.desafiospringboot.DTOs.UserSellerFollowedDTO;
 import com.desafiospringboot.Entities.UserClient;
 import com.desafiospringboot.Service.UserClientService;
 import com.desafiospringboot.Service.UserSellerService;

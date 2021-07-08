@@ -1,6 +1,6 @@
 package com.desafiospringboot.Service;
 
-import com.desafiospringboot.DTOs.UserSellerFollowersCountDTO;
+import com.desafiospringboot.DTOs.UserSeller.UserSellerFollowersCountDTO;
 import com.desafiospringboot.Entities.UserSeller;
 import com.desafiospringboot.Exception.UserNotFoundException;
 import com.desafiospringboot.Repositories.UserSellerRepository;
