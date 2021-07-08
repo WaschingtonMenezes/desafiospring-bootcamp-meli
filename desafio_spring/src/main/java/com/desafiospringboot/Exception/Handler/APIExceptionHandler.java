@@ -1,8 +1,9 @@
 package com.desafiospringboot.Exception.Handler;
 
 import com.desafiospringboot.DTOs.ExceptionDTO;
-import com.desafiospringboot.Entities.User;
+import com.desafiospringboot.Exception.ProductNotFoundException;
 import com.desafiospringboot.Exception.UserNotFoundException;
+import com.fasterxml.jackson.core.JsonParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
@@ -35,8 +36,18 @@ public class APIExceptionHandler {
         return ResponseEntity.badRequest().body(processedFieldErrors);
     }
 
+    @ExceptionHandler(JsonParseException.class)
+    public ResponseEntity<ExceptionDTO> defaultHandler(JsonParseException e){
+        return ResponseEntity.badRequest().body(new ExceptionDTO("Verifique a formatação do JSON"));
+    }
+
     @ExceptionHandler(UserNotFoundException.class)
     public ResponseEntity<ExceptionDTO> defaultHandler(UserNotFoundException e){
+        return ResponseEntity.badRequest().body(new ExceptionDTO(e.getMessage()));
+    }
+
+    @ExceptionHandler(ProductNotFoundException.class)
+    public ResponseEntity<ExceptionDTO> defaultHandler(ProductNotFoundException e){
         return ResponseEntity.badRequest().body(new ExceptionDTO(e.getMessage()));
     }
 
