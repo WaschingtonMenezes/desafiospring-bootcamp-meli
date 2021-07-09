@@ -1,5 +1,7 @@
 package com.desafiospringboot.Entities;
 
+import com.sun.istack.NotNull;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -8,10 +10,15 @@ public class Post {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    @NotNull
     private Date date;
+    @NotNull
     private Integer category;
+    @NotNull
     private Double price;
+    @NotNull
     private Boolean hasPromo = false;
+    @NotNull
     private Double discount;
 
     @OneToOne
