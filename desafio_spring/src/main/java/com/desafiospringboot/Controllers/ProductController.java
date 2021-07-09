@@ -33,7 +33,7 @@ public class ProductController {
 
     @PostMapping("/newpromopost")
     public ResponseEntity<PostPromoDTO> createPromoPost(@RequestBody @Valid PostPromoDTO newPost) {
-        Post createdPost = postService.createPromoPost(newPost);
+        Post createdPost = postService.createPost(newPost);
 
         return ResponseEntity.ok(PostPromoDTO.convert(createdPost));
     }
