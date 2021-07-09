@@ -55,4 +55,5 @@ public class UserController {
     	UserSellerFollowersListDTO client =  this.userSellerService.getFollowersUsers(userId, order);
         return new ResponseEntity<>(client, HttpStatus.OK);
     }
+
 }
