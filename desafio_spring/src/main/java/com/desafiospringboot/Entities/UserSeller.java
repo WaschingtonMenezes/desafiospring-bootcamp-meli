@@ -1,22 +1,14 @@
 package com.desafiospringboot.Entities;
 
-import javax.persistence.Entity;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
-
-import com.desafiospringboot.DTOs.UserSeller.UserSellerFollowedDTO;
-import com.desafiospringboot.DTOs.UserSeller.UserSellerFollowersListDTO;
-import com.desafiospringboot.Enum.OrderEnum;
-import com.desafiospringboot.Utils.SortByName;
-
+import javax.persistence.*;
 import java.util.List;
 
 @Entity
 public class UserSeller extends User{
-    @ManyToMany
+    @ManyToMany(mappedBy = "following")
     private List<UserClient> followers;
 
-    @OneToMany
+    @OneToMany(mappedBy = "userSeller")
     private List<Post> posts;
 
     public UserSeller(int id, String name, List<UserClient> followers) {
