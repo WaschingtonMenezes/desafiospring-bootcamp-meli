@@ -16,7 +16,8 @@ public class Post {
 
     @OneToOne
     private Product detail;
-    @ManyToOne
+
+    @ManyToOne(optional = false)
     private UserSeller userSeller;
 
     public Post(int id, Date date, Integer category, Double price, Product detail, UserSeller userSeller) {
