@@ -1,6 +1,7 @@
 package com.desafiospringboot.Service;
 
 import com.desafiospringboot.DTOs.Post.PostDTO;
+import com.desafiospringboot.DTOs.Post.PostPromoCountDTO;
 import com.desafiospringboot.DTOs.Post.PostPromoDTO;
 import com.desafiospringboot.Entities.Post;
 import com.desafiospringboot.Entities.Product;
@@ -42,5 +43,11 @@ public class PostService {
         post.setUserSeller(user);
 
         return postRepository.save(post);
+    }
+
+    public PostPromoCountDTO getPostPromoCount(int sellerId) {
+        UserSeller seller = userSellerService.findUserSellerById(sellerId);
+        int qnt = (int)seller.getPosts().stream().filter(post -> post.getHasPromo() != null && post.getHasPromo()).count();
+        return new PostPromoCountDTO(seller.getId(), seller.getName(), qnt);
     }
 }
