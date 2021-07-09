@@ -29,4 +29,8 @@ public class UserSeller extends User{
     public void setFollowers(List<UserClient> followers) {
         this.followers = followers;
     }
+
+    public List<Post> getPosts() {
+        return posts;
+    }
 }

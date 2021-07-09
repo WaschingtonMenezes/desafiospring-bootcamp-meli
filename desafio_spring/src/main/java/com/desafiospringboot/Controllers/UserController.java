@@ -51,4 +51,5 @@ public class UserController {
         UserSeller seller =  this.userSellerService.findUserSellerById(userId);
         return new ResponseEntity<>(UserSellerFollowersListDTO.convert(seller), HttpStatus.OK);
     }
+
 }
