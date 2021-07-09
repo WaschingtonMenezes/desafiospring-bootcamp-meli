@@ -7,6 +7,8 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public abstract class PostBaseDTO {
     private int id_post;
@@ -86,5 +88,9 @@ public abstract class PostBaseDTO {
         this.category = category;
         this.price = price;
         this.detail = detail;
+    }
+
+    public static List<PostDTO> convert(List<Post> posts) {
+        return posts.stream().map(PostDTO::new).collect(Collectors.toList());
     }
 }
