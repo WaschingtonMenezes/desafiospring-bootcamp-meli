@@ -4,6 +4,8 @@ import com.desafiospringboot.DTOs.ProductDTO;
 import com.desafiospringboot.Entities.Post;
 
 import java.util.Date;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class PostDTO extends PostBaseDTO{
     public PostDTO() {
@@ -11,10 +13,6 @@ public class PostDTO extends PostBaseDTO{
 
     public PostDTO(Post post) {
         super(post);
-    }
-
-    public PostDTO(int id_post, int userId, Date date, Integer category, Double price, ProductDTO detail) {
-        super(id_post, userId, date, category, price, detail);
     }
 
     public static PostDTO convert(Post post) {
@@ -31,5 +29,9 @@ public class PostDTO extends PostBaseDTO{
         post.setDetail(ProductDTO.convert(promoPostBaseDTO.getDetail()));
 
         return post;
+    }
+
+    public static List<PostDTO> convert(List<Post> posts) {
+        return posts.stream().map(PostDTO::new).collect(Collectors.toList());
     }
 }

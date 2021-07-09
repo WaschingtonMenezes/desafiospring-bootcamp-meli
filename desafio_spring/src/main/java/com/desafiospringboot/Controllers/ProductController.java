@@ -4,6 +4,7 @@ import com.desafiospringboot.DTOs.UserFollowedPostsDTO;
 import com.desafiospringboot.DTOs.Post.PostDTO;
 import com.desafiospringboot.DTOs.Post.PostPromoCountDTO;
 import com.desafiospringboot.DTOs.Post.PostPromoDTO;
+import com.desafiospringboot.DTOs.UserSeller.UserSellerPromoPostDTO;
 import com.desafiospringboot.Entities.Post;
 import com.desafiospringboot.Service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +36,13 @@ public class ProductController {
         Post createdPost = postService.createPromoPost(newPost);
 
         return ResponseEntity.ok(PostPromoDTO.convert(createdPost));
+    }
+
+    @GetMapping("/{userId}/list/")
+    public ResponseEntity<UserSellerPromoPostDTO> getPromoPostList(@PathVariable int userId) {
+        UserSellerPromoPostDTO sellerPromoPosts = postService.getPromoPostList(userId);
+
+        return ResponseEntity.ok(sellerPromoPosts);
     }
 
     @GetMapping("/{userId}/countPromo")

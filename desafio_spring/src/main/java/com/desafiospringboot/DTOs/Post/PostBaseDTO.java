@@ -89,8 +89,4 @@ public abstract class PostBaseDTO {
         this.price = price;
         this.detail = detail;
     }
-
-    public static List<PostDTO> convert(List<Post> posts) {
-        return posts.stream().map(PostDTO::new).collect(Collectors.toList());
-    }
 }
