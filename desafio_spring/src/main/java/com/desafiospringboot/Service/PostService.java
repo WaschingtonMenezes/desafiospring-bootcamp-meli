@@ -2,12 +2,16 @@ package com.desafiospringboot.Service;
 
 import com.desafiospringboot.DTOs.Post.PostDTO;
 import com.desafiospringboot.DTOs.Post.PostPromoDTO;
+import com.desafiospringboot.DTOs.UserSeller.UserSellerPromoPostDTO;
 import com.desafiospringboot.Entities.Post;
 import com.desafiospringboot.Entities.Product;
 import com.desafiospringboot.Entities.UserSeller;
 import com.desafiospringboot.Repositories.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class PostService {
@@ -42,5 +46,11 @@ public class PostService {
         post.setUserSeller(user);
 
         return postRepository.save(post);
+    }
+
+    public UserSellerPromoPostDTO getPromoPostList(int userId) {
+        UserSeller seller = userSellerService.findUserSellerById(userId);
+        List<Post> list = seller.getPosts().stream().filter(post -> post.getHasPromo() != null && post.getHasPromo()).collect(Collectors.toList());
+        return UserSellerPromoPostDTO.convert(seller, list);
     }
 }
