@@ -3,7 +3,9 @@ package com.desafiospringboot.DTOs.Post;
 import com.desafiospringboot.DTOs.ProductDTO;
 import com.desafiospringboot.Entities.Post;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class PostPromoDTO extends PostBaseDTO{
     private Boolean hasPromo;
@@ -49,5 +51,12 @@ public class PostPromoDTO extends PostBaseDTO{
         post.setHasPromo(true);
         post.setDiscount(promoPostDTO.getDiscount());
         return post;
+    }
+
+
+    public static List<PostPromoDTO> convert(List<Post> posts) {
+        List<PostPromoDTO> postsDTO = new ArrayList<>();
+        posts.forEach(post -> postsDTO.add(new PostPromoDTO(post)));
+        return postsDTO;
     }
 }
