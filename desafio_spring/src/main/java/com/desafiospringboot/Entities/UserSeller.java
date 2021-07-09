@@ -4,6 +4,12 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+
+import com.desafiospringboot.DTOs.UserSeller.UserSellerFollowedDTO;
+import com.desafiospringboot.DTOs.UserSeller.UserSellerFollowersListDTO;
+import com.desafiospringboot.Enum.OrderEnum;
+import com.desafiospringboot.Utils.SortByName;
+
 import java.util.List;
 
 @Entity

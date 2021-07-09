@@ -1,9 +1,17 @@
 package com.desafiospringboot.Service;
 
 import com.desafiospringboot.DTOs.UserSeller.UserSellerFollowersCountDTO;
+import com.desafiospringboot.DTOs.UserSeller.UserSellerFollowersListDTO;
+import com.desafiospringboot.Entities.User;
+import com.desafiospringboot.Entities.UserClient;
 import com.desafiospringboot.Entities.UserSeller;
+import com.desafiospringboot.Enum.OrderEnum;
 import com.desafiospringboot.Exception.UserNotFoundException;
 import com.desafiospringboot.Repositories.UserSellerRepository;
+import com.desafiospringboot.Utils.SortByName;
+
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,4 +36,14 @@ public class UserSellerService {
         }
         return seller;
     }
+      
+    public UserSellerFollowersListDTO getFollowersUsers(int userId, String order) {
+		OrderEnum orderEnum = order.equalsIgnoreCase("name_asc") ? OrderEnum.ASC : OrderEnum.DESC;
+		UserSeller seller = findUserSellerById(userId);
+		List<? extends User> clients = seller.getFollowers();
+
+		SortByName.sort(clients, orderEnum);
+		
+		return UserSellerFollowersListDTO.convert((List<UserClient>) clients, seller);
+	}
 }

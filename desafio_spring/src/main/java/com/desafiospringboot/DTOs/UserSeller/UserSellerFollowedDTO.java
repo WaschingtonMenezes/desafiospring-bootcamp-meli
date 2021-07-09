@@ -2,45 +2,23 @@ package com.desafiospringboot.DTOs.UserSeller;
 
 
 import com.desafiospringboot.Entities.UserClient;
+import com.desafiospringboot.Entities.UserSeller;
 
 import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class UserSellerFollowedDTO {
     @NotNull
     private int userId;
     @NotNull
     private String userName;
-    private List<UserSeller> followed;
+    private List<UserDTO> followed;
 
-    private static class UserSeller {
-        private int userId;
-        private String userName;
+    
 
-        public UserSeller(int userId, String userName) {
-            this.userId = userId;
-            this.userName = userName;
-        }
-
-        public int getUserId() {
-            return userId;
-        }
-
-        public void setUserId(int userId) {
-            this.userId = userId;
-        }
-
-         public String getName() {
-             return userName;
-         }
-
-         public void setName(String userName) {
-             this.userName = userName;
-         }
-     }
-
-    public UserSellerFollowedDTO(int userId, String userName, List<UserSeller> followed) {
+    public UserSellerFollowedDTO(int userId, String userName, List<UserDTO> followed) {
         this.userId = userId;
         this.userName = userName;
         this.followed = followed;
@@ -54,13 +32,11 @@ public class UserSellerFollowedDTO {
         return userName;
     }
 
-    public List<UserSeller> getFollowed() {
+    public List<UserDTO> getFollowed() {
         return followed;
     }
 
-    public static UserSellerFollowedDTO convert (UserClient user) {
-        List<UserSeller> listSellers = new ArrayList<>();
-        user.getFollowing().forEach(seller -> listSellers.add(new UserSeller(seller.getId(), seller.getName())));
-        return new UserSellerFollowedDTO(user.getId(), user.getName(), listSellers);
+    public static UserSellerFollowedDTO convert (List<UserSeller> listSellers, UserClient user) { 	
+        return new UserSellerFollowedDTO(user.getId(), user.getName(), UserDTO.convert(listSellers));
     }
 }

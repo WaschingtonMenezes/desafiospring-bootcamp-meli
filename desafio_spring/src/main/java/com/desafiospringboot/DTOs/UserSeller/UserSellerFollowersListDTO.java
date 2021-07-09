@@ -1,5 +1,6 @@
 package com.desafiospringboot.DTOs.UserSeller;
 
+import com.desafiospringboot.Entities.UserClient;
 import com.desafiospringboot.Entities.UserSeller;
 
 import javax.validation.constraints.NotNull;
@@ -11,40 +12,16 @@ public class UserSellerFollowersListDTO {
     private int userId;
     @NotNull
     private String sellerName;
-    private List<UserClient> followers;
+    private List<UserDTO> followers;
 
-    private static class UserClient {
-        private int userId;
-        private String name;
+    public UserSellerFollowersListDTO(int userId,String sellerName, List<UserDTO> followers) {
+		
+		this.userId = userId;
+		this.sellerName = sellerName;
+		this.followers = followers;
+	}
 
-        public UserClient(int userId, String name) {
-            this.userId = userId;
-            this.name = name;
-        }
-
-        public int getUserId() {
-            return userId;
-        }
-
-        public void setUserId(int userId) {
-            this.userId = userId;
-        }
-
-        public String getName() {
-            return name;
-        }
-
-        public void setName(String name) {
-            this.name = name;
-        }
-    }
-    public UserSellerFollowersListDTO(int userId, String sellerName, List<UserClient> followers) {
-        this.userId = userId;
-        this.sellerName = sellerName;
-        this.followers = followers;
-    }
-
-    public int getUserId() {
+	public int getUserId() {
         return userId;
     }
 
@@ -52,13 +29,12 @@ public class UserSellerFollowersListDTO {
         return sellerName;
     }
 
-    public List<UserClient> getFollowers() {
+    public List<UserDTO> getFollowers() {
         return followers;
     }
 
-    public static UserSellerFollowersListDTO convert (UserSeller seller) {
-        List<UserClient> listClient = new ArrayList<>();
-        seller.getFollowers().forEach(user -> listClient.add(new UserClient(user.getId(), user.getName())));
-        return new UserSellerFollowersListDTO(seller.getId(), seller.getName(), listClient);
+    public static UserSellerFollowersListDTO convert (List<UserClient> listClients, UserSeller seller) {
+    	return new UserSellerFollowersListDTO(seller.getId(), seller.getName(), UserDTO.convert(listClients));
     }
+    
 }
