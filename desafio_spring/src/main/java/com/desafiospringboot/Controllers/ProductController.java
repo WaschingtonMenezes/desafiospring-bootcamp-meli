@@ -2,6 +2,7 @@ package com.desafiospringboot.Controllers;
 
 import com.desafiospringboot.DTOs.Post.PostDTO;
 import com.desafiospringboot.DTOs.Post.PostPromoDTO;
+import com.desafiospringboot.DTOs.UserSeller.UserSellerPromoPostDTO;
 import com.desafiospringboot.Entities.Post;
 import com.desafiospringboot.Service.PostService;
 import com.desafiospringboot.Service.ProductService;
@@ -34,5 +35,11 @@ public class ProductController {
     public ResponseEntity<PostPromoDTO> createPromoPost(@RequestBody @Valid PostPromoDTO newPost) {
         Post createdPost = postService.createPromoPost(newPost);
         return ResponseEntity.ok(PostPromoDTO.convert(createdPost));
+    }
+
+    @GetMapping("/{userId}/list/")
+    public ResponseEntity<UserSellerPromoPostDTO> getPromoPostList(@PathVariable int userId) {
+        UserSellerPromoPostDTO sellerPromoPosts = postService.getPromoPostList(userId);
+        return ResponseEntity.ok(sellerPromoPosts);
     }
 }
