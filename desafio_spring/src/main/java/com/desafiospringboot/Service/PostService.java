@@ -58,17 +58,19 @@ public class PostService {
 
     public UserSellerPromoPostDTO getPromoPostList(int userId) {
         UserSeller seller = userSellerService.findUserSellerById(userId);
-        List<Post> list = seller.getPosts().stream().filter(post -> post.getHasPromo()).collect(Collectors.toList());
+        List<Post> list = seller.getPosts().stream().filter(Post::getHasPromo).collect(Collectors.toList());
         return UserSellerPromoPostDTO.convert(seller, list);
     }
 
     public PostPromoCountDTO getPostPromoCount(int sellerId) {
         UserSeller seller = userSellerService.findUserSellerById(sellerId);
-        int qnt = (int)seller.getPosts().stream().filter(post -> post.getHasPromo()).count();
+        int qnt = (int)seller.getPosts().stream().filter(Post::getHasPromo).count();
         return new PostPromoCountDTO(seller.getId(), seller.getName(), qnt);
     }
 
-    public UserFollowedPostsDTO getPostsFromFollowedUsers(int userID) {
+    public UserFollowedPostsDTO getPostsFromFollowedUsers(int userID, String order) {
+        OrderEnum orderEnum = order.equals("date_asc") ? OrderEnum.ASC : OrderEnum.DESC;
+
         List<UserSeller> followedUsers = this.userClientService.getFollowedUsersList(userID);
         List<Post> followedPosts = followedUsers
                 .stream()
@@ -77,7 +79,7 @@ public class PostService {
                 .filter(post -> post.getDate().after(Date.valueOf(LocalDate.now().minusWeeks(2))))
                 .collect(Collectors.toList());
 
-        SortByDate.sort(followedPosts, OrderEnum.DESC);
+        SortByDate.sort(followedPosts, orderEnum);
 
         return new UserFollowedPostsDTO(userID, PostDTO.convert(followedPosts));
     }
