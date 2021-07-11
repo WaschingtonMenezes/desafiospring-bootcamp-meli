@@ -8,7 +8,6 @@ import com.desafiospringboot.DTOs.User.UserSellerPromoPostDTO;
 import com.desafiospringboot.Entities.Post;
 import com.desafiospringboot.Service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -49,7 +48,7 @@ public class ProductController {
     public ResponseEntity<PostPromoCountDTO> getPostPromo(@PathVariable int userId) {
         PostPromoCountDTO promo =  this.postService.getPostPromoCount(userId);
 
-        return new ResponseEntity<>(promo, HttpStatus.OK);
+        return ResponseEntity.ok(promo);
     }
 
     @GetMapping("/followed/{userId}/list")
