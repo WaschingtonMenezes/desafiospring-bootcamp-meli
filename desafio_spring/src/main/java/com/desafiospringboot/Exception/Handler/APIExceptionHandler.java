@@ -2,7 +2,6 @@ package com.desafiospringboot.Exception.Handler;
 
 import com.desafiospringboot.DTOs.ExceptionDTO;
 import com.desafiospringboot.Exception.InvalidArgumentException;
-import com.desafiospringboot.Exception.ProductNotFoundException;
 import com.desafiospringboot.Exception.UserNotFoundException;
 import com.fasterxml.jackson.core.JsonParseException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,11 +48,6 @@ public class APIExceptionHandler {
 
     @ExceptionHandler(InvalidArgumentException.class)
     public ResponseEntity<ExceptionDTO> defaultHandler(InvalidArgumentException e){
-        return ResponseEntity.badRequest().body(new ExceptionDTO(e.getMessage()));
-    }
-
-    @ExceptionHandler(ProductNotFoundException.class)
-    public ResponseEntity<ExceptionDTO> defaultHandler(ProductNotFoundException e){
         return ResponseEntity.badRequest().body(new ExceptionDTO(e.getMessage()));
     }
 
