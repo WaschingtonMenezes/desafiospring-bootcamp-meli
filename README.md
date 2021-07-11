@@ -2,15 +2,14 @@
 
 # SocialMELI, by: Grupo 2.
 
-O Mercado Livre continua a crescer e para o próximo ano pretende começar a implementar uma série de ferramentas que permitam a compradores e vendedores
-uma experiência totalmente inovadora, onde o vínculo que os une é muito mais forte. A data de lançamento está próxima, por isso é necessário apresentar uma versão Beta do que será conhecido como "SocialMeli", onde os compradores poderão acompanhar
-seus vendedores favoritos e saber todas as novidades que eles mesmos postam. Desta forma, elaboramos uma prévia do Back-end da aplicação/Rede Social(API REST) e algumas de funcionalidades.
+<p align="justify"> O Mercado Livre continua a crescer e para o próximo ano pretende começar a implementar uma série de ferramentas que permitam a compradores e vendedores uma experiência totalmente inovadora, onde o vínculo que os une é muito mais forte. A data de lançamento está próxima, por isso é necessário apresentar uma versão Beta do que será conhecido como "SocialMeli", onde os compradores poderão acompanhar seus vendedores favoritos e saber todas as novidades que eles mesmos postam. Desta forma, elaboramos uma prévia do Back-end da aplicação/Rede Social(API REST) e algumas de funcionalidades.</p>
 
 ## Informações Backend
 - Tecnologoias utilizadas: 
 1. Java, IntelliJ e Spring Boot;
 2. Design Patterns: MVC
-3. Documentação e Consumo da API ([link](https://app.swaggerhub.com/apis-docs/Jonathan-eng-jur/cats-api/1.0.0))
+3. AWS - EC2 - ([link](http://ec2-3-22-164-174.us-east-2.compute.amazonaws.com:8080/))
+4. Documentação e Consumo da API ([link](http://ec2-3-22-164-174.us-east-2.compute.amazonaws.com:8080/swagger-ui.html))
 
 - Procedimentos para rodar local:
 1. Clone o repositório desta aplicação pelo terminal do seus sistema operacional, ou realizar o Download no formato zip. e descompactar;
@@ -47,8 +46,6 @@ seus vendedores favoritos e saber todas as novidades que eles mesmos postam. Des
 - Cupons de desconto na Rede Social, pelo nível de iteratividade gamificada -> proporcionais ao número de compras/iterações;
 - Cashback de 1%, 5 e 10% em compras selecionadas, nos quais serão creditados na conta Mercado Pago;
 - Recebimento de notificações, quando os vendedores que o cliente segue publicacar um produto na promoção.
-- 
-
 
 ### Squad
 
@@ -61,9 +58,9 @@ seus vendedores favoritos e saber todas as novidades que eles mesmos postam. Des
 - [![Github Badge](https://img.shields.io/badge/-Github-000?style=flat-square&logo=Github&logoColor=white&link=https://github.com/JCavalcanti-Meli)](https://github.com/JCavalcanti-Meli)
 
 - Marina Pinheiro Fachin
-- [![Linkedin Badge](https://img.shields.io/badge/-LinkedIn-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://br.linkedin.com/in/marina-pinheiro-fachin)](https://https://br.linkedin.com/in/marina-pinheiro-fachin)
+- [![Linkedin Badge](https://img.shields.io/badge/-LinkedIn-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/marina-pinheiro-fachin/)](https://www.linkedin.com/in/marina-pinheiro-fachin/)
 - [![Github Badge](https://img.shields.io/badge/-Github-000?style=flat-square&logo=Github&logoColor=white&link=https://github.com/mafachin)](https://github.com/mafachin)
 
 - Waschington L. Menezes Filho
-- [![Linkedin Badge](https://img.shields.io/badge/-LinkedIn-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://br.linkedin.com/in/was-menezes?trk=people-guest_people_search-card)](https://https://br.linkedin.com/in/was-menezes?trk=people-guest_people_search-card)
+- [![Linkedin Badge](https://img.shields.io/badge/-LinkedIn-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/was-menezes/)](https://www.linkedin.com/in/was-menezes/)
 - [![Github Badge](https://img.shields.io/badge/-Github-000?style=flat-square&logo=Github&logoColor=white&link=https://github.com/WaschingtonMenezes)](https://github.com/WaschingtonMenezes)
