@@ -1,6 +1,6 @@
 package com.desafiospringboot.Service;
 
-import com.desafiospringboot.DTOs.UserSeller.UserSellerFollowedDTO;
+import com.desafiospringboot.DTOs.User.UserSellerFollowedListDTO;
 import com.desafiospringboot.Entities.UserClient;
 import com.desafiospringboot.Entities.UserSeller;
 import com.desafiospringboot.Enum.OrderEnum;
@@ -75,14 +75,14 @@ public class UserClientService {
         this.userClientRepository.save(client);
     }
 
-	public UserSellerFollowedDTO getFollowedUsersDTO(int userId, String order) {
+	public UserSellerFollowedListDTO getFollowedUsersDTO(int userId, String order) {
 		OrderEnum orderEnum = order.equalsIgnoreCase("name_asc") ? OrderEnum.ASC : OrderEnum.DESC;
 		UserClient client = findUserClientById(userId);
 		List<UserSeller> sellers = client.getFollowing();
 
 		SortByName.sort(sellers, orderEnum);
 
-		return UserSellerFollowedDTO.convert(sellers, client);
+		return UserSellerFollowedListDTO.convert(sellers, client);
 	}
 
 }

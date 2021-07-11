@@ -1,10 +1,10 @@
 package com.desafiospringboot.Controllers;
 
-import com.desafiospringboot.DTOs.UserFollowedPostsDTO;
+import com.desafiospringboot.DTOs.User.UserFollowedPostsDTO;
 import com.desafiospringboot.DTOs.Post.PostDTO;
 import com.desafiospringboot.DTOs.Post.PostPromoCountDTO;
 import com.desafiospringboot.DTOs.Post.PostPromoDTO;
-import com.desafiospringboot.DTOs.UserSeller.UserSellerPromoPostDTO;
+import com.desafiospringboot.DTOs.User.UserSellerPromoPostDTO;
 import com.desafiospringboot.Entities.Post;
 import com.desafiospringboot.Service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;

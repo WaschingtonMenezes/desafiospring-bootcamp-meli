@@ -1,8 +1,7 @@
 package com.desafiospringboot.Service;
 
-import com.desafiospringboot.DTOs.UserSeller.UserSellerFollowersCountDTO;
-import com.desafiospringboot.DTOs.UserSeller.UserSellerFollowersListDTO;
-import com.desafiospringboot.Entities.User;
+import com.desafiospringboot.DTOs.User.UserSellerFollowersCountDTO;
+import com.desafiospringboot.DTOs.User.UserSellerFollowersListDTO;
 import com.desafiospringboot.Entities.UserClient;
 import com.desafiospringboot.Entities.UserSeller;
 import com.desafiospringboot.Enum.OrderEnum;

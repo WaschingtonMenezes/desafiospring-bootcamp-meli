@@ -1,8 +1,8 @@
 package com.desafiospringboot.Controllers;
 
-import com.desafiospringboot.DTOs.UserSeller.UserSellerFollowedDTO;
-import com.desafiospringboot.DTOs.UserSeller.UserSellerFollowersCountDTO;
-import com.desafiospringboot.DTOs.UserSeller.UserSellerFollowersListDTO;
+import com.desafiospringboot.DTOs.User.UserSellerFollowedListDTO;
+import com.desafiospringboot.DTOs.User.UserSellerFollowersCountDTO;
+import com.desafiospringboot.DTOs.User.UserSellerFollowersListDTO;
 import com.desafiospringboot.Service.UserClientService;
 import com.desafiospringboot.Service.UserSellerService;
 
@@ -40,9 +40,10 @@ public class UserController {
     }
 
     @GetMapping("/{userId}/followed/list")
-    public ResponseEntity<UserSellerFollowedDTO> getSellersFollowedList(@PathVariable int userId, @RequestParam(value="order", defaultValue="name_asc") String order) {
-    	UserSellerFollowedDTO sellers =  this.userClientService.getFollowedUsersDTO(userId, order);
-        return new ResponseEntity<>(sellers, HttpStatus.OK);
+    public ResponseEntity<UserSellerFollowedListDTO> getSellersFollowedList(@PathVariable int userId, @RequestParam(value="order", defaultValue="name_asc") String order) {
+    	UserSellerFollowedListDTO sellers =  this.userClientService.getFollowedUsersDTO(userId, order);
+
+    	return new ResponseEntity<>(sellers, HttpStatus.OK);
     }
 
     @GetMapping("/{userId}/followers/list")
