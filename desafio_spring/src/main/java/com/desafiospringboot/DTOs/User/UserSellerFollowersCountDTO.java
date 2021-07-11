@@ -1,4 +1,4 @@
-package com.desafiospringboot.DTOs.UserSeller;
+package com.desafiospringboot.DTOs.User;
 
 import com.desafiospringboot.Entities.UserSeller;
 
@@ -21,7 +21,7 @@ public class UserSellerFollowersCountDTO {
     }
 
     public static UserSellerFollowersCountDTO convert(UserSeller seller) {
-        return new UserSellerFollowersCountDTO(seller.getId(), seller.getName(), (int) seller.getFollowers().stream().count());
+        return new UserSellerFollowersCountDTO(seller.getId(), seller.getName(), seller.getFollowers().size());
     }
 
     public int getUserId() {

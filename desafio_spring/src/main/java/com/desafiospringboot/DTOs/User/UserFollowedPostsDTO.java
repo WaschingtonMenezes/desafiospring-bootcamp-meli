@@ -1,4 +1,4 @@
-package com.desafiospringboot.DTOs;
+package com.desafiospringboot.DTOs.User;
 
 import com.desafiospringboot.DTOs.Post.PostDTO;
 

@@ -1,10 +1,9 @@
-package com.desafiospringboot.DTOs.UserSeller;
+package com.desafiospringboot.DTOs.User;
 
 import com.desafiospringboot.Entities.UserClient;
 import com.desafiospringboot.Entities.UserSeller;
 
 import javax.validation.constraints.NotNull;
-import java.util.ArrayList;
 import java.util.List;
 
 public class UserSellerFollowersListDTO {
