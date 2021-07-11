@@ -52,13 +52,13 @@ public class APIExceptionHandler {
     }
 
     private List<ExceptionDTO> processFieldErrors(List<FieldError> fieldErrors) {
-        List<ExceptionDTO> listaDtos = new ArrayList<>();
+        List<ExceptionDTO> dtosList = new ArrayList<>();
 
         for (FieldError fieldError: fieldErrors) {
-            String mensagemDeErro = messageSource.getMessage(fieldError, LocaleContextHolder.getLocale());
-            listaDtos.add(new ExceptionDTO(fieldError.getField(), mensagemDeErro));
+            String errorMessage = messageSource.getMessage(fieldError, LocaleContextHolder.getLocale());
+            dtosList.add(new ExceptionDTO(fieldError.getField(), errorMessage));
         }
 
-        return listaDtos;
+        return dtosList;
     }
 }
