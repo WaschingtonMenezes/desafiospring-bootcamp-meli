@@ -7,7 +7,6 @@ import com.desafiospringboot.Service.UserClientService;
 import com.desafiospringboot.Service.UserSellerService;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -31,7 +30,8 @@ public class UserController {
     @GetMapping("/{userId}/followers/count")
     public ResponseEntity<UserSellerFollowersCountDTO> getFollowersCount(@PathVariable int userId) {
         UserSellerFollowersCountDTO sellerDTO =  this.userSellerService.countFollowers(userId);
-        return new ResponseEntity<>(sellerDTO, HttpStatus.OK);
+
+        return ResponseEntity.ok(sellerDTO);
     }
 
     @PostMapping("/{userId}/unfollow/{userIdToUnfollow}")
@@ -43,13 +43,14 @@ public class UserController {
     public ResponseEntity<UserSellerFollowedListDTO> getSellersFollowedList(@PathVariable int userId, @RequestParam(value="order", defaultValue="name_asc") String order) {
     	UserSellerFollowedListDTO sellers =  this.userClientService.getFollowedUsersDTO(userId, order);
 
-    	return new ResponseEntity<>(sellers, HttpStatus.OK);
+    	return ResponseEntity.ok(sellers);
     }
 
     @GetMapping("/{userId}/followers/list")
     public ResponseEntity<UserSellerFollowersListDTO> getFollowersList(@PathVariable int userId, @RequestParam(value="order", defaultValue="name_asc") String order) {
     	UserSellerFollowersListDTO client =  this.userSellerService.getFollowersUsers(userId, order);
-        return new ResponseEntity<>(client, HttpStatus.OK);
+
+    	return ResponseEntity.ok(client);
     }
 
 }
