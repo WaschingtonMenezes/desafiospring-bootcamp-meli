@@ -42,10 +42,10 @@ public class UserSellerService {
     public UserSellerFollowersListDTO getFollowersUsers(int userId, String order) {
 		OrderEnum orderEnum = order.equalsIgnoreCase("name_asc") ? OrderEnum.ASC : OrderEnum.DESC;
 		UserSeller seller = findUserSellerById(userId);
-		List<? extends User> clients = seller.getFollowers();
+		List<UserClient> clients = seller.getFollowers();
 
 		SortByName.sort(clients, orderEnum);
 		
-		return UserSellerFollowersListDTO.convert((List<UserClient>) clients, seller);
+		return UserSellerFollowersListDTO.convert(clients, seller);
 	}
 }
