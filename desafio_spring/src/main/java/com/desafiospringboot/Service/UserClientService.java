@@ -30,9 +30,11 @@ public class UserClientService {
 
     public UserClient findUserClientById(int userId) {
         UserClient client = this.userClientRepository.findById(userId).stream().findFirst().orElse(null);
+
         if (client == null) {
             throw new UserNotFoundException("Cliente não encontrado");
         }
+
         return client;
     }
 
