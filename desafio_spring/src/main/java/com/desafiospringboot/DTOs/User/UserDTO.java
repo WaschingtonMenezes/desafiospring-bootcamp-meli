@@ -1,10 +1,9 @@
-package com.desafiospringboot.DTOs.UserSeller;
+package com.desafiospringboot.DTOs.User;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 import com.desafiospringboot.Entities.User;
-import com.desafiospringboot.Entities.UserSeller;
 
 public class UserDTO {
 
@@ -12,7 +11,6 @@ public class UserDTO {
 	private String userName;
 
 	public UserDTO() {
-
 	}
 
 	public UserDTO(User user ) {
@@ -28,14 +26,14 @@ public class UserDTO {
 		this.userId = userId;
 	}
 
-	public String getName() {
+	public String getUserName() {
 		return userName;
 	}
 
-	public void setName(String userName) {
+	public void setUserName(String userName) {
 		this.userName = userName;
 	}
-	
+
 	public static List<UserDTO> convert(List<? extends User> users) {
 		return users.stream().map(UserDTO::new).collect(Collectors.toList());
 	}

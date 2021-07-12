@@ -3,7 +3,7 @@ package com.desafiospringboot.Entities;
 import com.sun.istack.NotNull;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.time.LocalDate;
 
 @Entity
 public class Post {
@@ -11,14 +11,12 @@ public class Post {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @NotNull
-    private Date date;
+    private LocalDate date;
     @NotNull
     private Integer category;
     @NotNull
     private Double price;
-    @NotNull
     private Boolean hasPromo = false;
-    @NotNull
     private Double discount;
 
     @OneToOne
@@ -27,7 +25,7 @@ public class Post {
     @ManyToOne(optional = false)
     private UserSeller userSeller;
 
-    public Post(int id, Date date, Integer category, Double price, Product detail, UserSeller userSeller) {
+    public Post(int id, LocalDate date, Integer category, Double price, Product detail, UserSeller userSeller) {
         this.id = id;
         this.date = date;
         this.category = category;
@@ -47,11 +45,11 @@ public class Post {
         this.id = id;
     }
 
-    public Date getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 

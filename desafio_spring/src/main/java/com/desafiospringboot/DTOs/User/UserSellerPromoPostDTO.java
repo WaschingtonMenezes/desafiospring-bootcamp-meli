@@ -1,4 +1,4 @@
-package com.desafiospringboot.DTOs.UserSeller;
+package com.desafiospringboot.DTOs.User;
 
 import com.desafiospringboot.DTOs.Post.PostPromoDTO;
 import com.desafiospringboot.Entities.Post;
