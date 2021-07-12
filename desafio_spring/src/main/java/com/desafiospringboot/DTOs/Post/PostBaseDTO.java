@@ -6,9 +6,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
-import java.util.Date;
-import java.util.List;
-import java.util.stream.Collectors;
+import java.time.LocalDate;
 
 public abstract class PostBaseDTO {
     private int id_post;
@@ -16,7 +14,7 @@ public abstract class PostBaseDTO {
     private int userId;
     @NotNull
     @JsonFormat(pattern="dd-MM-yyyy")
-    private Date date;
+    private LocalDate date;
     @NotNull
     private Integer category;
     @NotNull
@@ -37,11 +35,11 @@ public abstract class PostBaseDTO {
         this.userId = userId;
     }
 
-    public Date getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 
@@ -79,14 +77,5 @@ public abstract class PostBaseDTO {
         this.category = post.getCategory();
         this.price = post.getPrice();
         this.detail = new ProductDTO(post.getDetail());
-    }
-
-    public PostBaseDTO(int id_post, int userId, Date date, Integer category, Double price, ProductDTO detail) {
-        this.id_post = id_post;
-        this.userId = userId;
-        this.date = date;
-        this.category = category;
-        this.price = price;
-        this.detail = detail;
     }
 }
