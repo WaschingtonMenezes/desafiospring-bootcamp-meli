@@ -37,7 +37,7 @@ public class ProductController {
         return ResponseEntity.ok(PostPromoDTO.convert(createdPost));
     }
 
-    @GetMapping("/{userId}/list/")
+    @GetMapping("/{userId}/list")
     public ResponseEntity<UserSellerPromoPostDTO> getPromoPostList(@PathVariable int userId) {
         UserSellerPromoPostDTO sellerPromoPosts = postService.getPromoPostList(userId);
 
