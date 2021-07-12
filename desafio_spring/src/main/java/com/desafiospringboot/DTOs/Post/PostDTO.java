@@ -3,13 +3,11 @@ package com.desafiospringboot.DTOs.Post;
 import com.desafiospringboot.DTOs.ProductDTO;
 import com.desafiospringboot.Entities.Post;
 
-import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class PostDTO extends PostBaseDTO{
-    public PostDTO() {
-    }
+    public PostDTO() {}
 
     public PostDTO(Post post) {
         super(post);
