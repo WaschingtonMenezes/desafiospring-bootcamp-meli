@@ -1,21 +1,18 @@
 package com.desafiospringboot.Entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.util.List;
 
 @Entity
-public abstract class User {
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private int id;
     @NotNull
     private String name;
 
-    public User(long id, String name) {
+    public User(int id, String name) {
         this.id = id;
         this.name = name;
     }
@@ -23,11 +20,11 @@ public abstract class User {
     public User() {
     }
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

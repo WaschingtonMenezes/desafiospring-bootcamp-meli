@@ -1,23 +1,31 @@
 package com.desafiospringboot.Entities;
 
+import com.sun.istack.NotNull;
+
 import javax.persistence.*;
-import java.util.Date;
+import java.time.LocalDate;
 
 @Entity
 public class Post {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
-    private Date date;
+    private int id;
+    @NotNull
+    private LocalDate date;
+    @NotNull
     private Integer category;
+    @NotNull
     private Double price;
+    private Boolean hasPromo = false;
+    private Double discount;
 
     @OneToOne
     private Product detail;
-    @ManyToOne
+
+    @ManyToOne(optional = false)
     private UserSeller userSeller;
 
-    public Post(long id, Date date, Integer category, Double price, Product detail, UserSeller userSeller) {
+    public Post(int id, LocalDate date, Integer category, Double price, Product detail, UserSeller userSeller) {
         this.id = id;
         this.date = date;
         this.category = category;
@@ -29,19 +37,19 @@ public class Post {
     public Post() {
     }
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-    public Date getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 
@@ -75,5 +83,21 @@ public class Post {
 
     public void setUserSeller(UserSeller userSeller) {
         this.userSeller = userSeller;
+    }
+
+    public Boolean getHasPromo() {
+        return hasPromo;
+    }
+
+    public void setHasPromo(Boolean hasPromo) {
+        this.hasPromo = hasPromo;
+    }
+
+    public Double getDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(Double discount) {
+        this.discount = discount;
     }
 }
