@@ -1,8 +1,5 @@
 package com.desafiospringboot.DTOs.Post;
 
-import com.desafiospringboot.DTOs.UserSeller.UserSellerFollowersCountDTO;
-import com.desafiospringboot.Entities.UserSeller;
-
 import javax.validation.constraints.NotNull;
 
 public class PostPromoCountDTO {
