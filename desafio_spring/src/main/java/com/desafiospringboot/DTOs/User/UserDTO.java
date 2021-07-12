@@ -26,14 +26,14 @@ public class UserDTO {
 		this.userId = userId;
 	}
 
-	public String getName() {
+	public String getUserName() {
 		return userName;
 	}
 
-	public void setName(String userName) {
+	public void setUserName(String userName) {
 		this.userName = userName;
 	}
-	
+
 	public static List<UserDTO> convert(List<? extends User> users) {
 		return users.stream().map(UserDTO::new).collect(Collectors.toList());
 	}
